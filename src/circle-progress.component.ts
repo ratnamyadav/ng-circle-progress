@@ -56,6 +56,7 @@ export interface CircleProgressOptionsInterface {
     startFromZero?: boolean;
     showZeroOuterStroke?: boolean;
     lazy?: boolean;
+    style?: string;
 }
 
 export class CircleProgressOptions implements CircleProgressOptionsInterface {
@@ -112,6 +113,7 @@ export class CircleProgressOptions implements CircleProgressOptionsInterface {
     startFromZero = true;
     showZeroOuterStroke = true;
     lazy = false;
+    style = '';
 }
 
 /** @dynamic Prevent compiling error when using type `Document` https://github.com/angular/angular/issues/20351 */
@@ -120,7 +122,7 @@ export class CircleProgressOptions implements CircleProgressOptionsInterface {
     template: `
         <svg xmlns="http://www.w3.org/2000/svg" *ngIf="svg"
              [attr.viewBox]="svg.viewBox" preserveAspectRatio="xMidYMid meet"
-             [attr.height]="svg.height" [attr.width]="svg.width" (click)="emitClickEvent($event)" [attr.class]="options.class">
+             [attr.height]="svg.height" [attr.width]="svg.width" (click)="emitClickEvent($event)" [attr.class]="options.class" [attr.style]="options.style">
             <defs>
                 <linearGradient *ngIf="options.outerStrokeGradient" [attr.id]="svg.outerLinearGradient.id">
                     <stop offset="5%" [attr.stop-color]="svg.outerLinearGradient.colorStop1"  [attr.stop-opacity]="1"/>
@@ -393,7 +395,7 @@ export class CircleProgressComponent implements OnChanges, OnInit, OnDestroy {
         // get subtitle object
         let subtitle = {
             x: centre.x,
-            y: centre.y,
+            y: centre.y + 20,
             textAnchor: 'middle',
             color: this.options.subtitleColor,
             fontSize: this.options.subtitleFontSize,
