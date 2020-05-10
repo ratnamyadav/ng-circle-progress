@@ -1,6 +1,6 @@
 {
-  "name": "ng-circle-progress",
-  "version": "1.5.0",
+  "name": "ng-circle-progress-ratnam",
+  "version": "1.5.2",
   "scripts": {
     "build": "ng-packagr -p ng-package.json",
     "build:watch": "npm run build -- -w",
@@ -12,8 +12,8 @@
     "url": "https://github.com/bootsoon/ng-circle-progress"
   },
   "author": {
-    "name": "bootsoon",
-    "email": "bootsoon@aliyun.com"
+    "name": "ratnam",
+    "email": "ratnam.yadav@gmail.com"
   },
   "keywords": [
     "angular",

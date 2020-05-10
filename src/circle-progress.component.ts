@@ -56,7 +56,6 @@ export interface CircleProgressOptionsInterface {
     startFromZero?: boolean;
     showZeroOuterStroke?: boolean;
     lazy?: boolean;
-    style?: string;
 }
 
 export class CircleProgressOptions implements CircleProgressOptionsInterface {
@@ -113,7 +112,6 @@ export class CircleProgressOptions implements CircleProgressOptionsInterface {
     startFromZero = true;
     showZeroOuterStroke = true;
     lazy = false;
-    style = '';
 }
 
 /** @dynamic Prevent compiling error when using type `Document` https://github.com/angular/angular/issues/20351 */
@@ -122,7 +120,7 @@ export class CircleProgressOptions implements CircleProgressOptionsInterface {
     template: `
         <svg xmlns="http://www.w3.org/2000/svg" *ngIf="svg"
              [attr.viewBox]="svg.viewBox" preserveAspectRatio="xMidYMid meet"
-             [attr.height]="svg.height" [attr.width]="svg.width" (click)="emitClickEvent($event)" [attr.class]="options.class" [attr.style]="options.style">
+             [attr.height]="svg.height" [attr.width]="svg.width" (click)="emitClickEvent($event)" [attr.class]="options.class">
             <defs>
                 <linearGradient *ngIf="options.outerStrokeGradient" [attr.id]="svg.outerLinearGradient.id">
                     <stop offset="5%" [attr.stop-color]="svg.outerLinearGradient.colorStop1"  [attr.stop-opacity]="1"/>
@@ -176,7 +174,7 @@ export class CircleProgressOptions implements CircleProgressOptionsInterface {
                   alignment-baseline="baseline"
                   [attr.x]="svg.circle.cx"
                   [attr.y]="svg.circle.cy"
-                  [attr.text-anchor]="svg.title.textAnchor">
+                  [attr.text-anchor]="svg.title.textAnchor" style="font-family: PulpDisplayLight;">
                 <ng-container *ngIf="options.showTitle">
                     <tspan *ngFor="let tspan of svg.title.tspans"
                            [attr.x]="svg.title.x"
@@ -276,7 +274,6 @@ export class CircleProgressComponent implements OnChanges, OnInit, OnDestroy {
     @Input() responsive: boolean;
     @Input() startFromZero: boolean;
     @Input() showZeroOuterStroke: boolean;
-    
     @Input() lazy: boolean;
 
     @Input('options') templateOptions: CircleProgressOptions;
